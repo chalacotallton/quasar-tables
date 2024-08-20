@@ -1,18 +1,40 @@
 <template>
   <q-page class="flex flex-center">
-    <p>Current Quasar Mode: {{ quasarMode }}</p>
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-vertical.svg"
-      style="width: 200px; height: 200px"
+    <q-table
+      flat
+      bordered
+      title="Treats"
+      :rows="rows"
+      :columns="columns"
+      no-data-label="I didn't find anything for you"
+      row-key="name"
     />
   </q-page>
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { ref } from "vue";
 defineOptions({
   name: "IndexPage",
 });
-const quasarMode = computed(() => process.env.MODE);
+const rows = ref([]);
+columns: [
+  {
+    name: "name",
+    required: true,
+    label: "name",
+    align: "left",
+    field: "name",
+    sortable: true,
+  },
+  {
+    name: "type",
+    align: "center",
+    label: "type",
+    field: "type",
+    sortable: true,
+  },
+  { name: "database", label: "database", field: "database", sortable: true },
+  { name: "table", label: "table", field: "table", sortable: true },
+];
 </script>
