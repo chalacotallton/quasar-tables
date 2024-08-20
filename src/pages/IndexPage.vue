@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex flex-center">
+  <q-page class="column justify-start items-center content-center">
     <q-file
       filled
       bottom-slots
@@ -24,7 +24,7 @@
     <q-table
       flat
       bordered
-      title="Treats"
+      title="Tabelas RD"
       :rows="rows"
       :columns="columns"
       no-data-label="I didn't find anything for you"
