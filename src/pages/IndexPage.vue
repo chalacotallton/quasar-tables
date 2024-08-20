@@ -61,5 +61,19 @@ const columns = ref([
 const csvfile = ref(null);
 function changedCSV(val) {
   console.log(val);
+  if (val) {
+    // Create a FileReader object
+    const reader = new FileReader();
+
+    // Define what happens when the file is successfully read
+    reader.onload = function (e) {
+      // `e.target.result` contains the contents of the file
+      const fileContents = e.target.result;
+      console.log(fileContents);
+    };
+
+    // Read the file as text (or any other method like readAsArrayBuffer)
+    reader.readAsText(val); // Here you specify which file to read
+  }
 }
 </script>
