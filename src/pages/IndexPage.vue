@@ -4,10 +4,9 @@
       filled
       bottom-slots
       v-model="csvfile"
-      label="Label"
+      label="Upload CSV"
       counter
       @update:model-value="changedCSV"
-      :filter="filter"
     >
       <template v-slot:prepend>
         <q-icon name="cloud_upload" @click.stop.prevent />
@@ -30,6 +29,7 @@
       :columns="columns"
       no-data-label="I didn't find anything for you"
       row-key="name"
+      :filter="filter"
     />
   </q-page>
 </template>
@@ -62,7 +62,6 @@ const columns = ref([
 ]);
 const csvfile = ref(null);
 function changedCSV(val) {
-  console.log(val);
   if (val) {
     // Create a FileReader object
     const reader = new FileReader();
