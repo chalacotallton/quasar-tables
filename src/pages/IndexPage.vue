@@ -69,9 +69,9 @@ function changedCSV(val) {
     reader.onload = function (e) {
       // `e.target.result` contains the contents of the file
       const fileContents = e.target.result;
-      const rows = fileContents.split("\n").map((row) => row.split(";"));
-      const headers = rows[0];
-      rows.value = rows.slice(1).map((row, index) => {
+      const fileRows = fileContents.split("\n").map((row) => row.split(";"));
+      const headers = fileRows[0];
+      const gg = fileRows.slice(1).map((row, index) => {
         let rowData = {};
         headers.forEach((header, i) => {
           rowData[header] = row[i];
@@ -79,6 +79,7 @@ function changedCSV(val) {
         rowData.id = index + 1; // Unique row key
         return rowData;
       });
+      console.log(gg);
     };
 
     // Read the file as text (or any other method like readAsArrayBuffer)
