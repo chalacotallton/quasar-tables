@@ -18,7 +18,7 @@ defineOptions({
   name: "IndexPage",
 });
 const rows = ref([]);
-columns: [
+const columns = ref([
   {
     name: "name",
     required: true,
@@ -36,5 +36,5 @@ columns: [
   },
   { name: "database", label: "database", field: "database", sortable: true },
   { name: "table", label: "table", field: "table", sortable: true },
-];
+]);
 </script>
