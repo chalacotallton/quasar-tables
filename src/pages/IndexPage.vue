@@ -7,6 +7,7 @@
       label="Label"
       counter
       @update:model-value="changedCSV"
+      :filter="filter"
     >
       <template v-slot:prepend>
         <q-icon name="cloud_upload" @click.stop.prevent />
@@ -38,6 +39,7 @@ import { ref } from "vue";
 defineOptions({
   name: "IndexPage",
 });
+const filter = ref("");
 const rows = ref([]);
 const columns = ref([
   {
