@@ -1,6 +1,13 @@
 <template>
   <q-page class="flex flex-center">
-    <q-file filled bottom-slots v-model="csvfile" label="Label" counter>
+    <q-file
+      filled
+      bottom-slots
+      v-model="csvfile"
+      label="Label"
+      counter
+      @update:model-value="changedCSV"
+    >
       <template v-slot:prepend>
         <q-icon name="cloud_upload" @click.stop.prevent />
       </template>
@@ -52,4 +59,7 @@ const columns = ref([
   { name: "table", label: "table", field: "table", sortable: true },
 ]);
 const csvfile = ref(null);
+function changedCSV() {
+  alert("hh");
+}
 </script>
