@@ -60,6 +60,6 @@ const columns = ref([
 ]);
 const csvfile = ref(null);
 function changedCSV(val) {
-  console.log(typeof val);
+  console.log(val);
 }
 </script>
