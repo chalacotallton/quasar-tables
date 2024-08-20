@@ -28,7 +28,7 @@
       :rows="rows"
       :columns="columns"
       no-data-label="I didn't find anything for you"
-      row-key="name"
+      row-key="id"
       :filter="filter"
     >
       <template v-slot:top>
