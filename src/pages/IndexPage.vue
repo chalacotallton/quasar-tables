@@ -71,7 +71,7 @@ function changedCSV(val) {
       const fileContents = e.target.result;
       const rows = fileContents.split("\n").map((row) => row.split(";"));
       const headers = rows[0];
-      csvData.value = rows.slice(1).map((row, index) => {
+      rows.value = rows.slice(1).map((row, index) => {
         let rowData = {};
         headers.forEach((header, i) => {
           rowData[header] = row[i];
