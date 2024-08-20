@@ -69,7 +69,9 @@ function changedCSV(val) {
     reader.onload = function (e) {
       // `e.target.result` contains the contents of the file
       const fileContents = e.target.result;
-      console.log(fileContents);
+      const rows = fileContents.split("\n").map((row) => row.split(";"));
+      const headers = rows[0];
+      console.log(headers);
     };
 
     // Read the file as text (or any other method like readAsArrayBuffer)
