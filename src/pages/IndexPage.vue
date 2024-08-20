@@ -1,5 +1,19 @@
 <template>
   <q-page class="flex flex-center">
+    <q-file filled bottom-slots v-model="csvfile" label="Label" counter>
+      <template v-slot:prepend>
+        <q-icon name="cloud_upload" @click.stop.prevent />
+      </template>
+      <template v-slot:append>
+        <q-icon
+          name="close"
+          @click.stop.prevent="model = null"
+          class="cursor-pointer"
+        />
+      </template>
+
+      <template v-slot:hint> Field hint </template>
+    </q-file>
     <q-table
       flat
       bordered
@@ -37,4 +51,5 @@ const columns = ref([
   { name: "database", label: "database", field: "database", sortable: true },
   { name: "table", label: "table", field: "table", sortable: true },
 ]);
+const csvfile = ref(null);
 </script>
