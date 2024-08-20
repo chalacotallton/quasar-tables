@@ -30,7 +30,6 @@
       no-data-label="I didn't find anything for you"
       row-key="name"
       :filter="filter"
-      :rows-per-page-options="[100, 0]"
     >
       <template v-slot:top>
         <q-space />
