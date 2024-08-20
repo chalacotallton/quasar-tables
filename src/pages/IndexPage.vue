@@ -59,7 +59,7 @@ const columns = ref([
   { name: "table", label: "table", field: "table", sortable: true },
 ]);
 const csvfile = ref(null);
-function changedCSV() {
-  alert("hh");
+function changedCSV(val) {
+  console.log(typeof val);
 }
 </script>
