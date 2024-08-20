@@ -71,7 +71,14 @@ function changedCSV(val) {
       const fileContents = e.target.result;
       const rows = fileContents.split("\n").map((row) => row.split(";"));
       const headers = rows[0];
-      console.log(headers);
+      csvData.value = rows.slice(1).map((row, index) => {
+        let rowData = {};
+        headers.forEach((header, i) => {
+          rowData[header] = row[i];
+        });
+        rowData.id = index + 1; // Unique row key
+        return rowData;
+      });
     };
 
     // Read the file as text (or any other method like readAsArrayBuffer)
