@@ -30,16 +30,23 @@
       no-data-label="I didn't find anything for you"
       row-key="name"
       :filter="filter"
+      :rows-per-page-options="[100, 0]"
     >
-    <template v-slot:top>
+      <template v-slot:top>
         <q-space />
-        <q-input borderless dense debounce="300" color="primary" v-model="filter">
+        <q-input
+          borderless
+          dense
+          debounce="300"
+          color="primary"
+          v-model="filter"
+        >
           <template v-slot:append>
             <q-icon name="search" />
           </template>
         </q-input>
       </template>
-  </q-table>
+    </q-table>
   </q-page>
 </template>
 
