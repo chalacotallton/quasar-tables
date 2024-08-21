@@ -30,6 +30,7 @@
       no-data-label="I didn't find anything for you"
       row-key="id"
       :filter="filter"
+      style="width: 100%"
     >
       <template v-slot:top>
         <q-space />
