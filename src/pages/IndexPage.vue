@@ -1,5 +1,5 @@
 <template>
-  <q-page class="row justify-start items-center content-center">
+  <q-page class="row justify-start items-start content-start">
     <div class="q-gutter-sm col-3">
       <q-checkbox v-model="selection" val="teal" label="Teal" color="teal" />
       <q-checkbox
