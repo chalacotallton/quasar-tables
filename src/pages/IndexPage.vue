@@ -1,15 +1,14 @@
 <template>
   <q-page class="row justify-start items-start content-start">
     <div class="q-gutter-sm col-3">
-      <q-checkbox v-model="selection" val="teal" label="Teal" color="teal" />
       <q-checkbox
+        v-for="db in dbs"
         v-model="selection"
-        val="orange"
-        label="Orange"
-        color="orange"
+        val="teal"
+        label="Teal"
+        color="teal"
+        :key="db"
       />
-      <q-checkbox v-model="selection" val="red" label="Red" color="red" />
-      <q-checkbox v-model="selection" val="cyan" label="Cyan" color="cyan" />
     </div>
     <div class="column col">
       <q-file
@@ -75,7 +74,8 @@ defineOptions({
 const filter = ref("");
 const rows = ref([]);
 const originalRows = ref([]);
-const selection = ref(["teal", "red"]);
+const selection = ref([]);
+const dbs = ref([]);
 const loading = ref(false);
 const columns = ref([
   {
@@ -117,6 +117,11 @@ function changedCSV(val) {
         rowData.id = index + 1; // Unique row key
         return rowData;
       });
+      const uniqueDbsArray = Array.from(
+        new Set(originalRows.value.map((el) => el.database))
+      );
+      dbs.value = uniqueDbsArray;
+      selection.value = uniqueDbsArray;
       rows.value = JSON.parse(JSON.stringify(originalRows.value));
       loading.value = false;
     };
