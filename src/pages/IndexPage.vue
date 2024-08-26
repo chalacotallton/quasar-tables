@@ -1,56 +1,69 @@
 <template>
-  <q-page class="column justify-start items-center content-center">
-    <q-file
-      filled
-      bottom-slots
-      v-model="csvfile"
-      label="Upload CSV"
-      counter
-      @update:model-value="changedCSV"
-    >
-      <template v-slot:prepend>
-        <q-icon name="cloud_upload" @click.stop.prevent />
-      </template>
-      <template v-slot:append>
-        <q-icon
-          name="close"
-          @click.stop.prevent="model = null"
-          class="cursor-pointer"
-        />
-      </template>
+  <q-page class="row justify-start items-center content-center">
+    <div class="q-gutter-sm">
+      <q-checkbox v-model="selection" val="teal" label="Teal" color="teal" />
+      <q-checkbox
+        v-model="selection"
+        val="orange"
+        label="Orange"
+        color="orange"
+      />
+      <q-checkbox v-model="selection" val="red" label="Red" color="red" />
+      <q-checkbox v-model="selection" val="cyan" label="Cyan" color="cyan" />
+    </div>
+    <div class="column">
+      <q-file
+        filled
+        bottom-slots
+        v-model="csvfile"
+        label="Upload CSV"
+        counter
+        @update:model-value="changedCSV"
+      >
+        <template v-slot:prepend>
+          <q-icon name="cloud_upload" @click.stop.prevent />
+        </template>
+        <template v-slot:append>
+          <q-icon
+            name="close"
+            @click.stop.prevent="model = null"
+            class="cursor-pointer"
+          />
+        </template>
 
-      <template v-slot:hint> Field hint </template>
-    </q-file>
-    <q-table
-      flat
-      bordered
-      title="Tabelas RD"
-      :rows="rows"
-      :columns="columns"
-      no-data-label="I didn't find anything for you"
-      row-key="id"
-      :filter="filter"
-      style="width: 100%"
-      :loading="loading"
-    >
-      <template v-slot:top>
-        <q-space />
-        <q-input
-          borderless
-          dense
-          debounce="300"
-          color="primary"
-          v-model="filter"
-        >
-          <template v-slot:append>
-            <q-icon name="search" />
-          </template>
-        </q-input>
-      </template>
-      <template v-slot:loading>
-        <q-inner-loading showing color="primary" />
-      </template>
-    </q-table>
+        <template v-slot:hint> Field hint </template>
+      </q-file>
+      <q-table
+        flat
+        bordered
+        title="Tabelas RD"
+        :rows="rows"
+        :columns="columns"
+        no-data-label="I didn't find anything for you"
+        row-key="id"
+        :filter="filter"
+        style="width: 100%"
+        :loading="loading"
+      >
+        <template v-slot:top>
+          <q-space />
+          <q-input
+            borderless
+            dense
+            debounce="300"
+            color="primary"
+            v-model="filter"
+          >
+            <template v-slot:append>
+              <q-icon name="search" />
+            </template>
+          </q-input>
+        </template>
+        <template v-slot:loading>
+          <q-inner-loading showing color="primary" />
+        </template>
+      </q-table>
+    </div>
   </q-page>
 </template>
 
@@ -62,6 +75,7 @@ defineOptions({
 const filter = ref("");
 const rows = ref([]);
 const originalRows = ref([]);
+const selection = ref(["teal", "red"]);
 const loading = ref(false);
 const columns = ref([
   {
