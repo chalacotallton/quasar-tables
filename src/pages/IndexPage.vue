@@ -97,7 +97,7 @@ function changedCSV(val) {
         rowData.id = index + 1; // Unique row key
         return rowData;
       });
-      rows.value = JSON.parse(JSON.stringify(originalRows.value));
+      rows.value = structuredClone(originalRows.value);
     };
 
     // Read the file as text (or any other method like readAsArrayBuffer)
