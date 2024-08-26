@@ -103,7 +103,7 @@ function changedCSV(val) {
         rowData.id = index + 1; // Unique row key
         return rowData;
       });
-      rows.value = JSON.pase(JSON.stringify(originalRows.value));
+      rows.value = JSON.parse(JSON.stringify(originalRows.value));
       loading.value = false;
     };
 
