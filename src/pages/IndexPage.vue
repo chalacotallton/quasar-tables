@@ -31,6 +31,7 @@
       row-key="id"
       :filter="filter"
       style="width: 100%"
+      :loading="loading"
     >
       <template v-slot:top>
         <q-space />
@@ -46,6 +47,9 @@
           </template>
         </q-input>
       </template>
+      <template v-slot:loading>
+        <q-inner-loading showing color="primary" />
+      </template>
     </q-table>
   </q-page>
 </template>
@@ -58,6 +62,7 @@ defineOptions({
 const filter = ref("");
 const rows = ref([]);
 const originalRows = ref([]);
+const loading = ref(false);
 const columns = ref([
   {
     name: "name",
@@ -80,6 +85,7 @@ const columns = ref([
 const csvfile = ref(null);
 function changedCSV(val) {
   if (val) {
+    loading.value = true;
     // Create a FileReader object
     const reader = new FileReader();
 
@@ -98,6 +104,7 @@ function changedCSV(val) {
         return rowData;
       });
       rows.value = structuredClone(originalRows.value);
+      loading.value = false;
     };
 
     // Read the file as text (or any other method like readAsArrayBuffer)
