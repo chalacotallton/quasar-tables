@@ -1,6 +1,6 @@
 <template>
   <q-page class="row justify-start items-center content-center">
-    <div class="q-gutter-sm">
+    <div class="q-gutter-sm col-3">
       <q-checkbox v-model="selection" val="teal" label="Teal" color="teal" />
       <q-checkbox
         v-model="selection"
@@ -11,7 +11,7 @@
       <q-checkbox v-model="selection" val="red" label="Red" color="red" />
       <q-checkbox v-model="selection" val="cyan" label="Cyan" color="cyan" />
     </div>
-    <div class="column">
+    <div class="column col">
       <q-file
         filled
         bottom-slots
