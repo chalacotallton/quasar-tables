@@ -2,7 +2,7 @@
   <q-page class="row justify-start items-start content-start">
     <div class="q-gutter-sm col-3 column q-pa-sm">
       <q-list bordered padding>
-        <q-item tag="label" v-ripple v-for="db in dbs" :key="db">
+        <q-item tag="label" v-ripple v-for="db in dbs" :key="db" class="q-gutter-none q-pb-none q-mb-none">
           <q-item-section side top>
             <q-checkbox
               v-model="selection"
