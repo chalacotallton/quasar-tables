@@ -1,6 +1,6 @@
 <template>
   <q-page class="row justify-start items-start content-start">
-    <div class="q-gutter-sm col-3">
+    <div class="q-gutter-sm col-3 column">
       <q-checkbox
         v-for="db in dbs"
         v-model="selection"
