@@ -2,14 +2,12 @@
   <q-page class="row justify-start items-start content-start">
     <div class="q-gutter-sm col-3 column q-pa-sm">
       <q-list bordered padding>
-        <q-item tag="label" v-ripple>
+        <q-item tag="label" v-ripple v-for="db in dbs" :key="db">
           <q-item-section side top>
             <q-checkbox
-              v-for="db in dbs"
               v-model="selection"
               :val="db"
               color="teal"
-              :key="db"
               :style="{ fontSize: '0.75rem' }"
             />
           </q-item-section>
