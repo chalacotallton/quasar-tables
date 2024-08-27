@@ -2,19 +2,34 @@
   <q-page class="row justify-start items-start content-start">
     <div class="q-gutter-sm col-3 column q-pa-sm">
       <q-list dense bordered padding>
-        <q-item>
-          <q-item-section side top>
-            <q-checkbox
-              size="sm"
-              v-model="desmarcarTudo"
-              color="teal"
-              :style="{ fontSize: '0.75rem' }"
-            />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Desmarcar Todos</q-item-label>
-          </q-item-section>
-        </q-item>
+        <div class="row">
+          <q-item class="col-6">
+            <q-item-section side top>
+              <q-checkbox
+                size="sm"
+                v-model="desmarcarTudo"
+                color="teal"
+                :style="{ fontSize: '0.75rem' }"
+              />
+            </q-item-section>
+            <q-item-section>
+              <q-item-label>Desmarcar Todos</q-item-label>
+            </q-item-section>
+          </q-item>
+          <q-item class="col-6">
+            <q-item-section side top>
+              <q-checkbox
+                size="sm"
+                v-model="marcarTudo"
+                color="teal"
+                :style="{ fontSize: '0.75rem' }"
+              />
+            </q-item-section>
+            <q-item-section>
+              <q-item-label>Marcar Todos</q-item-label>
+            </q-item-section>
+          </q-item>
+        </div>
         <q-item
           tag="label"
           v-ripple
@@ -109,6 +124,7 @@ const originalRows = ref([]);
 const selection = ref([]);
 const dbs = ref([]);
 const desmarcarTudo = ref(false);
+const marcarTudo = ref(true);
 const loading = ref(false);
 const columns = ref([
   {
@@ -153,7 +169,6 @@ function changedCSV(val) {
       const uniqueDbsArray = Array.from(
         new Set(originalRows.value.map((el) => el.database).filter((el) => el))
       );
-      console.log(uniqueDbsArray);
       dbs.value = uniqueDbsArray;
       selection.value = uniqueDbsArray;
       loading.value = false;
@@ -167,7 +182,16 @@ function changedCSV(val) {
 watch(desmarcarTudo, (newValue) => {
   if (newValue) {
     selection.value = []; // Reset selection when desmarcarTudo is true
-    desmarcarTudo.value = false; // Optionally, reset desmarcarTudo to false
+    marcarTudo.value = false;
+  }
+});
+watch(marcarTudo, (newValue) => {
+  if (newValue) {
+    const uniqueDbsArray = Array.from(
+      new Set(originalRows.value.map((el) => el.database).filter((el) => el))
+    );
+    selection.value = uniqueDbsArray;
+    desmarcarTudo.value = false;
   }
 });
 </script>
