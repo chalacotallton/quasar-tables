@@ -5,6 +5,7 @@
         <q-item>
           <q-item-section side top>
             <q-checkbox
+              size="sm"
               v-model="desmarcarTudo"
               color="teal"
               :style="{ fontSize: '0.75rem' }"
