@@ -2,7 +2,26 @@
   <q-page class="row justify-start items-start content-start">
     <div class="q-gutter-sm col-3 column q-pa-sm">
       <q-list bordered padding>
-        <q-item tag="label" v-ripple v-for="db in dbs" :key="db" class="q-gutter-none q-pb-none q-mb-none">
+        <q-item dense>
+          <q-item-section side top>
+            <q-checkbox
+              v-model="desmarcarTudo"
+              color="teal"
+              :style="{ fontSize: '0.75rem' }"
+            />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Desmarcar Todos</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item
+          tag="label"
+          v-ripple
+          v-for="db in dbs"
+          :key="db"
+          dense
+          class="q-gutter-none q-pb-none q-mb-none"
+        >
           <q-item-section side top>
             <q-checkbox
               v-model="selection"
@@ -75,7 +94,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 defineOptions({
   name: "IndexPage",
 });
@@ -84,6 +103,7 @@ const rows = ref([]);
 const originalRows = ref([]);
 const selection = ref([]);
 const dbs = ref([]);
+const desmarcarTudo = ref(false)
 const loading = ref(false);
 const columns = ref([
   {
