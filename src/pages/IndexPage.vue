@@ -1,6 +1,5 @@
 <template>
   <q-page class="row justify-start items-start content-start">
-    <div col-3>{{ dbs }} {{ selection }}</div>
     <div class="q-gutter-sm col-3">
       <q-checkbox
         v-for="db in dbs"
