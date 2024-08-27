@@ -118,8 +118,9 @@ function changedCSV(val) {
         return rowData;
       });
       const uniqueDbsArray = Array.from(
-        new Set(originalRows.value.map((el) => el.database))
+        new Set(originalRows.value.map((el) => el.database).filter((el) => el))
       );
+      console.log(uniqueDbsArray);
       dbs.value = uniqueDbsArray;
       selection.value = uniqueDbsArray;
       rows.value = JSON.parse(JSON.stringify(originalRows.value));
