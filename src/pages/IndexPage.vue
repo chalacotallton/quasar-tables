@@ -1,8 +1,8 @@
 <template>
   <q-page class="row justify-start items-start content-start">
     <div class="q-gutter-sm col-3 column q-pa-sm">
-      <q-list bordered padding>
-        <q-item dense>
+      <q-list dense bordered padding>
+        <q-item>
           <q-item-section side top>
             <q-checkbox
               v-model="desmarcarTudo"
@@ -19,7 +19,6 @@
           v-ripple
           v-for="db in dbs"
           :key="db"
-          dense
           class="q-gutter-none q-pb-none q-mb-none"
         >
           <q-item-section side top>
@@ -103,7 +102,7 @@ const rows = ref([]);
 const originalRows = ref([]);
 const selection = ref([]);
 const dbs = ref([]);
-const desmarcarTudo = ref(false)
+const desmarcarTudo = ref(false);
 const loading = ref(false);
 const columns = ref([
   {
@@ -159,4 +158,11 @@ function changedCSV(val) {
     reader.readAsText(val); // Here you specify which file to read
   }
 }
+
+watch(desmarcarTudo, (newValue) => {
+  if (newValue) {
+    selection.value = []; // Reset selection when desmarcarTudo is true
+    desmarcarTudo.value = false; // Optionally, reset desmarcarTudo to false
+  }
+});
 </script>
