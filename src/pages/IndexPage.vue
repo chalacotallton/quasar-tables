@@ -99,8 +99,12 @@ import { ref, watch } from "vue";
 defineOptions({
   name: "IndexPage",
 });
+const rows = computed(() => {
+  return originalRows.value.filter((row) =>
+    selection.value.includes(row.database)
+  );
+});
 const filter = ref("");
-const rows = ref([]);
 const originalRows = ref([]);
 const selection = ref([]);
 const dbs = ref([]);
@@ -152,7 +156,6 @@ function changedCSV(val) {
       console.log(uniqueDbsArray);
       dbs.value = uniqueDbsArray;
       selection.value = uniqueDbsArray;
-      rows.value = JSON.parse(JSON.stringify(originalRows.value));
       loading.value = false;
     };
 
