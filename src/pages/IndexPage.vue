@@ -24,6 +24,7 @@
         >
           <q-item-section side top>
             <q-checkbox
+              size="sm"
               v-model="selection"
               :val="db"
               color="teal"
